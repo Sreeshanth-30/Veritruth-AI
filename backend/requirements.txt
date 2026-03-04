@@ -1,0 +1,68 @@
+# ──────────────────────────────────────────────────────────────
+# VeriTruth AI — Python Dependencies
+# ──────────────────────────────────────────────────────────────
+
+# ── Core Framework ────────────────────────────────────────────
+fastapi>=0.115.6
+uvicorn[standard]>=0.34.0
+pydantic>=2.10.4
+pydantic-settings>=2.7.1
+starlette>=0.41.3
+python-multipart>=0.0.20
+email-validator>=2.0.0
+
+# ── Authentication ────────────────────────────────────────────
+python-jose[cryptography]==3.3.0
+cryptography>=44.0.0
+passlib[bcrypt]==1.7.4
+bcrypt>=4.2.1
+httpx==0.28.1
+
+# ── Databases ─────────────────────────────────────────────────
+sqlalchemy[asyncio]>=2.0.36
+asyncpg>=0.30.0
+alembic>=1.14.1
+motor>=3.7.0
+pymongo>=4.10.1
+neo4j>=5.27.0
+
+# ── Redis / Celery ────────────────────────────────────────────
+redis[hiredis]>=5.2.1
+celery[redis]>=5.4.0
+
+# ── AI / ML ───────────────────────────────────────────────────
+torch>=2.4.0
+torchvision>=0.19.0
+transformers>=4.47.1
+tokenizers>=0.21.0
+spacy>=3.7.0,<4.0.0
+shap>=0.45.0
+openai>=1.58.1
+scikit-learn>=1.5.0
+
+# ── NLP Utilities ─────────────────────────────────────────────
+beautifulsoup4==4.12.3
+lxml>=5.3.0
+nltk==3.9.1
+textstat==0.7.4
+
+# ── Image / Video ─────────────────────────────────────────────
+Pillow>=11.0.0
+opencv-python-headless>=4.9.0
+
+# ── PDF ───────────────────────────────────────────────────────
+PyMuPDF>=1.24.0
+
+# ── Utilities ─────────────────────────────────────────────────
+python-dotenv>=1.0.1
+aiofiles>=24.1.0
+orjson>=3.10.13
+aiosqlite>=0.21.0
+
+# ── Testing ───────────────────────────────────────────────────
+pytest>=8.3.4
+pytest-asyncio>=0.25.0
+httpx>=0.28.1
+
+# ── Linting / Formatting ─────────────────────────────────────
+ruff>=0.8.6

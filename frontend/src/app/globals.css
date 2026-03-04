@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@layer base {
+  :root {
+    --color-primary: 0 210 255;
+    --color-secondary: 123 47 247;
+    --color-accent: 0 229 160;
+    --color-danger: 255 58 92;
+    --color-warning: 255 184 48;
+  }
+
+  * {
+    @apply border-dark-600;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-100 antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-brand-primary/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-dark-600 hover:bg-dark-500;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-brand-primary/30 hover:shadow-glow;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary px-6 py-3 font-semibold text-white shadow-glow transition-all duration-300 hover:shadow-glow-lg hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-brand-primary/30 px-6 py-3 font-semibold text-brand-primary transition-all duration-300 hover:bg-brand-primary/10 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-xl bg-brand-danger px-6 py-3 font-semibold text-white transition-all duration-300 hover:brightness-110 active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-dark-300 outline-none transition-all duration-300 focus:border-brand-primary/50 focus:ring-2 focus:ring-brand-primary/20;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl;
+  }
+
+  .stat-card {
+    @apply glass-card flex flex-col items-center gap-2 text-center;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-dark-300 transition-all duration-200 hover:bg-white/5 hover:text-white;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-brand-primary/10 text-brand-primary;
+  }
+
+  .risk-badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider;
+  }
+
+  .risk-low {
+    @apply risk-badge bg-brand-accent/20 text-brand-accent;
+  }
+  .risk-medium {
+    @apply risk-badge bg-brand-warning/20 text-brand-warning;
+  }
+  .risk-high {
+    @apply risk-badge bg-orange-500/20 text-orange-400;
+  }
+  .risk-critical {
+    @apply risk-badge bg-brand-danger/20 text-brand-danger;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

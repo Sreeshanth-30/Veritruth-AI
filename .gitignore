@@ -1,0 +1,52 @@
+# ── env ──
+.env
+.env.local
+.env.production
+
+# ── python ──
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# ── node ──
+node_modules/
+.next/
+out/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+
+# ── docker volumes ──
+pg_data/
+mongo_data/
+neo4j_data/
+redis_data/
+
+# ── databases ──
+*.db
+*.sqlite
+*.sqlite3
+
+# ── mongodb binaries & data ──
+mongodb/data/
+mongodb/mongodb-win32*/
+mongodb/mongodb-windows*/
+
+# ── redis binaries & data ──
+redis/*.exe
+redis/*.dll
+redis/dump.rdb
+
+# ── misc ──
+*.log
+.DS_Store
+Thumbs.db
+.deps_installed
+setup_git.ps1
