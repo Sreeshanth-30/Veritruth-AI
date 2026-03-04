@@ -136,7 +136,7 @@ def analyze_sentiment(text: str) -> dict[str, Any]:
 def _compute_emotions(text: str, sentiment_probs) -> dict[str, float]:
     """Compute granular emotion scores from text features and sentiment."""
     text_lower = text.lower()
-    
+
     # Keyword-based emotion indicators
     fear_words = {"fear", "terrifying", "alarming", "dangerous", "threat", "deadly", "catastroph", "panic", "crisis"}
     anger_words = {"outrage", "furious", "disgraceful", "corrupt", "scandal", "betrayal", "abuse", "exploit"}
@@ -168,7 +168,7 @@ def _detect_manipulation(
     text: str, emotions: dict[str, float]
 ) -> tuple[float, list[str]]:
     """Detect emotional manipulation patterns.
-    
+
     Signs of manipulation:
     - Extreme emotional language
     - Fear + urgency combination

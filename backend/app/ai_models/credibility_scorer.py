@@ -16,7 +16,7 @@ async def score_credibility(
     claims_results: Optional[list[dict]] = None,
 ) -> dict[str, Any]:
     """Compute a comprehensive credibility score for an article.
-    
+
     Factors:
     - Source domain reputation
     - Writing quality indicators
@@ -24,7 +24,7 @@ async def score_credibility(
     - Claim verification rate
     - Author identification
     - Bias indicators
-    
+
     Returns:
         {
             "overall_score": float (0-100),

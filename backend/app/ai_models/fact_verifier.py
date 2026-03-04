@@ -14,16 +14,16 @@ async def verify_claims(
     language: str = "en",
 ) -> list[dict[str, Any]]:
     """Verify extracted claims using Retrieval-Augmented Generation.
-    
+
     Pipeline:
     1. Embed each claim using a sentence transformer
     2. Retrieve relevant evidence from vector DB + knowledge base
     3. Use LLM to synthesize verdict (SUPPORTED / REFUTED / UNVERIFIABLE)
-    
+
     Args:
         claims: List of claim dicts from claim_extractor
         language: Target language for cross-lingual support
-    
+
     Returns:
         [
             {
@@ -60,7 +60,7 @@ async def verify_claims(
 
 async def _retrieve_evidence(claim_text: str) -> list[dict]:
     """Retrieve relevant evidence documents for a claim.
-    
+
     Sources:
     - Internal MongoDB knowledge base
     - Google Fact Check API
@@ -131,7 +131,7 @@ async def _generate_verdict(
     language: str = "en",
 ) -> dict[str, Any]:
     """Use LLM to synthesize a fact-check verdict from retrieved evidence.
-    
+
     Falls back to rule-based analysis if LLM is unavailable.
     """
     from app.core.config import get_settings

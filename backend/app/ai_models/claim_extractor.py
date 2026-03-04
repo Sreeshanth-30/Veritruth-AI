@@ -111,10 +111,14 @@ def extract_claims(text: str) -> list[dict[str, Any]]:
             has_named_entities = len(entities) > 0
 
             score = 0.0
-            if has_numbers: score += 0.3
-            if has_claim_verb: score += 0.25
-            if is_quote: score += 0.15
-            if has_named_entities: score += 0.2
+            if has_numbers:
+                score += 0.3
+            if has_claim_verb:
+                score += 0.25
+            if is_quote:
+                score += 0.15
+            if has_named_entities:
+                score += 0.2
             if any(tok.dep_ in ("nsubj", "nsubjpass") and tok.ent_type_ for tok in sent):
                 score += 0.1
 

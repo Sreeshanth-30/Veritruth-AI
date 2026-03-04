@@ -16,6 +16,11 @@ from starlette.middleware.gzip import GZipMiddleware
 
 from app.core.config import get_settings
 from app.core.database import init_databases, close_databases
+from app.routers.auth_router import router as auth_router
+from app.routers.analysis_router import router as analysis_router
+from app.routers.admin_router import router as admin_router
+from app.routers.websocket_router import router as ws_router
+from app.routers.extension_router import router as extension_router
 from app.services.cache_service import close_redis
 
 logger = logging.getLogger(__name__)
@@ -123,12 +128,6 @@ async def internal_error_handler(request: Request, exc):
 
 
 # ────────────────────── Routers ───────────────────────────────
-
-from app.routers.auth_router import router as auth_router
-from app.routers.analysis_router import router as analysis_router
-from app.routers.admin_router import router as admin_router
-from app.routers.websocket_router import router as ws_router
-from app.routers.extension_router import router as extension_router
 
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["Authentication"])
 app.include_router(analysis_router, prefix="/api/v1/analysis", tags=["Analysis"])

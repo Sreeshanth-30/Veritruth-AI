@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.dependencies import get_current_user, get_optional_user
 from app.core.config import get_settings
-from app.core.database import get_db, get_mongo_db
+from app.core.database import get_db
 from app.core.security import compute_article_hash
 from app.models.analysis import Analysis, AnalysisStatus, InputType
 from app.models.user import User
@@ -64,7 +64,7 @@ async def analyze_text(
     current_user: Optional[User] = Depends(get_optional_user),
 ):
     """Submit article text for multi-layer AI analysis.
-    
+
     Starts an async Celery task that runs all AI pipelines in parallel.
     Poll the status endpoint or use WebSocket for real-time updates.
     """

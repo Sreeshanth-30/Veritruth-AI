@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 
 from app.auth.dependencies import get_current_user
 from app.models.user import User
@@ -33,13 +33,13 @@ async def quick_check(
     current_user: User = Depends(get_current_user),
 ):
     """Lightweight endpoint for browser extension quick-check.
-    
+
     Returns a fast risk assessment without full pipeline analysis.
     Designed for sub-second response times.
     """
     # Check cache first (Redis)
     from app.services.cache_service import get_cached_quick_check, cache_quick_check
-    
+
     cached = await get_cached_quick_check(body.url)
     if cached:
         cached["is_cached"] = True

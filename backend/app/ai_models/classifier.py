@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 
@@ -81,7 +81,7 @@ def _load_model():
 
 def classify_fake_news(text: str) -> dict[str, Any]:
     """Run the fake news classifier on input text.
-    
+
     Returns:
         {
             "fake_probability": float (0-1),

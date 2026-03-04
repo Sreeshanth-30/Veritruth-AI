@@ -16,9 +16,9 @@ async def build_knowledge_graph(
     source_url: str | None = None,
 ) -> dict[str, Any]:
     """Build a knowledge graph from extracted entities, claims, and fact-check results.
-    
+
     Stores in Neo4j and returns a D3.js-compatible node/edge structure.
-    
+
     Returns:
         {
             "nodes": [{"id": "...", "label": "...", "type": "...", "color": "..."}],
@@ -94,7 +94,7 @@ async def build_knowledge_graph(
 
         # Link fact to its claim
         edges.append({
-            "source": f"claim_{i}" if i < len(claims) else f"claim_0",
+            "source": f"claim_{i}" if i < len(claims) else "claim_0",
             "target": fact_node_id,
             "label": "verified_as",
         })

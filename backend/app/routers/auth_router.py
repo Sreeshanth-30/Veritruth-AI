@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import logging
-from datetime import timedelta
 
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, status

@@ -4,8 +4,6 @@
 from __future__ import annotations
 
 import enum
-import uuid
-from datetime import datetime
 from typing import TYPE_CHECKING, Optional
 
 from sqlalchemy import Boolean, Enum, String, Text

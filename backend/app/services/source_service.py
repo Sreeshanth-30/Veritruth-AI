@@ -7,7 +7,7 @@ import logging
 from typing import Any
 from uuid import UUID
 
-from sqlalchemy import select, func
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.source import TrustedSource
@@ -98,7 +98,7 @@ async def blacklist_source(db: AsyncSession, source_id: UUID) -> TrustedSource |
 
 async def check_domain_credibility(domain: str) -> dict:
     """Return credibility info for a domain without requiring a DB session.
-    
+
     Used by the browser extension endpoint for quick domain lookups.
     Results are Redis-cached for 1 hour.
     """

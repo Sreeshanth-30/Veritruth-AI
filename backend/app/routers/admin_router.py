@@ -6,17 +6,16 @@ from __future__ import annotations
 import logging
 import uuid
 from datetime import datetime, timedelta, timezone
-from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy import select, func, desc, and_
+from sqlalchemy import select, func, desc
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.auth.dependencies import require_admin, get_current_user, require_role
+from app.auth.dependencies import require_admin
 from app.core.database import get_db, get_mongo_db
 from app.models.analysis import Analysis, AnalysisStatus, RiskLevel
 from app.models.source import TrustedSource
-from app.models.user import User, UserRole
+from app.models.user import User
 from app.schemas.admin import (
     AnalyticsResponse,
     DashboardStatsResponse,
@@ -25,7 +24,6 @@ from app.schemas.admin import (
     TrendDataPoint,
     TrustedSourceRequest,
     TrustedSourceResponse,
-    UserActivityLog,
     TrainingLabelRequest,
 )
 
@@ -70,14 +68,14 @@ async def get_dashboard_stats(
 
     active_users = (
         await db.execute(
-            select(func.count(User.id)).where(User.is_active == True)
+            select(func.count(User.id)).where(User.is_active)
         )
     ).scalar() or 0
 
     flagged_domains = (
         await db.execute(
             select(func.count(TrustedSource.id)).where(
-                TrustedSource.is_blacklisted == True
+                TrustedSource.is_blacklisted
             )
         )
     ).scalar() or 0
@@ -138,7 +136,7 @@ async def get_analytics(
     # Top flagged domains
     result = await db.execute(
         select(TrustedSource)
-        .where(TrustedSource.is_blacklisted == True)
+        .where(TrustedSource.is_blacklisted)
         .order_by(desc(TrustedSource.fake_count))
         .limit(10)
     )
@@ -183,7 +181,7 @@ async def list_sources(
     """List all trusted/blacklisted news sources."""
     query = select(TrustedSource)
     if approved_only:
-        query = query.where(TrustedSource.is_approved == True)
+        query = query.where(TrustedSource.is_approved)
     query = query.order_by(desc(TrustedSource.credibility_score))
     result = await db.execute(query)
     return [TrustedSourceResponse.model_validate(s) for s in result.scalars().all()]

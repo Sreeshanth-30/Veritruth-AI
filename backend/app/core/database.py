@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import logging
-from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
 from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase  # type: ignore[import-untyped]
@@ -119,7 +118,7 @@ async def close_neo4j() -> None:
 # ── Lifecycle ─────────────────────────────────────────────────
 async def init_databases() -> None:
     """Validate all database connections at startup.
-    
+
     Logs a warning for each unavailable database instead of crashing,
     so the API can start even in partial-infrastructure dev environments.
     """

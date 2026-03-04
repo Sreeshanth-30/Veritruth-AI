@@ -19,7 +19,7 @@ async def run_quick_analysis(text: str | None = None, url: str | None = None) ->
 
 async def quick_analyse(text: str, url: str | None = None) -> dict[str, Any]:
     """Lightweight analysis for browser extension — fast response (<2s target).
-    
+
     Runs only classifier + basic claim extraction (no RAG / KG / deepfake).
     """
     content_hash = hashlib.sha256(text.encode()).hexdigest()

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ def _load_model():
 
 def analyze_image(image_path: str) -> dict[str, Any]:
     """Analyze an image for signs of manipulation or AI generation.
-    
+
     Returns:
         {
             "is_manipulated": bool,
